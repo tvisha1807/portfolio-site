@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const featuredProjects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Tvisha Pandey — UX Designer">
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center px-6 py-24 max-w-5xl mx-auto">
+    <div>
+      <p class="text-sm uppercase tracking-widest text-gray-500 mb-4">UX Designer</p>
+      <h1 class="text-5xl md:text-7xl font-display font-medium leading-tight mb-6">
+        Tvisha Pandey
+      </h1>
+      <p class="text-xl text-gray-600 max-w-xl">
+        I design digital experiences that feel intuitive, look considered, and make people's lives
+        a little easier.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured work -->
+  <section class="px-6 py-24 max-w-5xl mx-auto">
+    <h2 class="text-xs uppercase tracking-widest text-gray-400 mb-12">Selected Work</h2>
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        featuredProjects.map((project) => (
+          <a
+            href={`/work/${project.id}`}
+            class="group block overflow-hidden rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors"
+          >
+            <div class="aspect-video bg-gray-200" />
+            <div class="p-6">
+              <p class="text-xs text-gray-400 mb-1">{project.data.year}</p>
+              <h3 class="text-xl font-medium group-hover:underline">{project.data.title}</h3>
+              <p class="mt-2 text-sm text-gray-500">{project.data.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {project.data.tags.map((tag) => (
+                  <span class="text-xs bg-white border border-gray-200 rounded-full px-3 py-1">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="mt-12">
+      <a href="/work" class="text-sm underline underline-offset-4 hover:text-gray-500 transition-colors">
+        View all work →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

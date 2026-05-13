@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout
+  title={`${project.data.title} — Tvisha Pandey`}
+  description={project.data.description}
+  ogImage={project.data.coverImage}
+>
+  <article class="px-6 py-24 max-w-3xl mx-auto">
+    <!-- Back link -->
+    <a
+      href="/work"
+      class="text-xs uppercase tracking-widest text-gray-400 hover:text-gray-700 transition-colors mb-12 inline-block"
+    >
+      ← Back to work
+    </a>
+
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+        {project.data.year} · {project.data.role}
+      </p>
+      <h1 class="text-4xl md:text-5xl font-display font-medium leading-tight mb-4">
+        {project.data.title}
+      </h1>
+      <p class="text-xl text-gray-500">{project.data.description}</p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {
+          project.data.tags.map((tag) => (
+            <span class="text-xs border border-gray-200 rounded-full px-3 py-1">{tag}</span>
+          ))
+        }
+      </div>
+    </header>
+
+    <!-- Cover image placeholder -->
+    <div class="aspect-video bg-gray-100 rounded-2xl mb-16" />
+
+    <!-- Case study content -->
+    <div class="prose prose-gray max-w-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

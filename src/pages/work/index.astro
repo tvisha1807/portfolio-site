@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout title="Work — Tvisha Pandey" description="UX design case studies and projects by Tvisha Pandey.">
+  <main class="px-6 py-24 max-w-5xl mx-auto">
+    <p class="text-xs uppercase tracking-widest text-gray-400 mb-8">Work</p>
+    <h1 class="text-4xl md:text-5xl font-display font-medium mb-16">All Projects</h1>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        projects.map((project) => (
+          <a
+            href={`/work/${project.id}`}
+            class="group block overflow-hidden rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors"
+          >
+            <div class="aspect-video bg-gray-200" />
+            <div class="p-6">
+              <p class="text-xs text-gray-400 mb-1">
+                {project.data.year} · {project.data.role}
+              </p>
+              <h2 class="text-xl font-medium group-hover:underline">{project.data.title}</h2>
+              <p class="mt-2 text-sm text-gray-500">{project.data.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>
