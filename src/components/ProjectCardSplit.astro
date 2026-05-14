@@ -1,0 +1,32 @@
+---
+const { project } = Astro.props;
+---
+
+<article class="max-w-[1512px] mx-auto px-6 md:px-12 xl:px-[108px] mt-16 md:mt-20 xl:mt-24">
+  <div class="flex flex-col md:flex-row gap-8 md:gap-10 xl:gap-12 items-start">
+    <div class="md:w-1/2 flex flex-col justify-center">
+      <h3 class="text-[24px] md:text-[28px] xl:text-[36px] font-bold leading-snug">
+        {project.data.title}
+      </h3>
+      {project.data.summary && (
+        <p class="mt-4 text-base md:text-lg text-muted leading-relaxed">
+          {project.data.summary}
+        </p>
+      )}
+      <a
+        href={`/work/${project.id}`}
+        class="inline-block mt-4 text-accent underline underline-offset-4 text-base md:text-lg hover:opacity-80 transition-opacity"
+      >
+        Click to view the project ↗
+      </a>
+    </div>
+
+    <div class="md:w-1/2">
+      <img
+        src={project.data.coverImage}
+        alt={project.data.title}
+        class="w-full aspect-[744/682] rounded-xl md:rounded-2xl object-cover"
+      />
+    </div>
+  </div>
+</article>

@@ -1,0 +1,27 @@
+---
+const navLinks = [
+  { label: 'work', href: '/work' },
+  { label: 'about me', href: '/about' },
+];
+---
+
+<header class="pt-10 md:pt-14 max-w-[1512px] mx-auto px-6 md:px-12 xl:px-[108px]">
+  <nav class="flex items-center justify-between">
+    <a href="/" class="text-xl md:text-2xl font-bold text-black leading-none">tvisha</a>
+
+    <span class="hidden md:block w-[62px] h-px bg-black" aria-hidden="true"></span>
+
+    <ul class="flex gap-4 list-none m-0 p-0">
+      {navLinks.map(({ label, href }) => (
+        <li>
+          <a
+            href={href}
+            class="text-[18px] md:text-2xl font-bold text-black hover:text-accent transition-colors"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

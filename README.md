@@ -2,7 +2,7 @@
 
 Personal portfolio site for Tvisha Pandey, UX Designer.
 
-**Live site:** [tvishapandey.me](https://tvishapandey.me)  
+**Live site:** [tvisha.me](https://tvisha.me)  
 **Staging:** Vercel preview URL (auto-generated per branch)
 
 ## Stack

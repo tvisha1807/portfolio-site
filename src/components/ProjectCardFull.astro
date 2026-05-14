@@ -1,0 +1,21 @@
+---
+const { project } = Astro.props;
+---
+
+<article class="max-w-[1512px] mx-auto px-6 md:px-12 xl:px-[108px] mt-12 md:mt-14 xl:mt-16">
+  <h3 class="text-[28px] md:text-[36px] xl:text-[48px] font-bold leading-snug max-w-[900px]">
+    {project.data.title}
+  </h3>
+  <a
+    href={`/work/${project.id}`}
+    class="inline-block mt-4 text-accent underline underline-offset-4 text-base md:text-lg hover:opacity-80 transition-opacity"
+  >
+    Click to view the project ↗
+  </a>
+
+  <img
+    src={project.data.coverImage}
+    alt={project.data.title}
+    class="mt-8 md:mt-9 xl:mt-10 w-full aspect-[1504/952] rounded-xl md:rounded-2xl object-cover"
+  />
+</article>
