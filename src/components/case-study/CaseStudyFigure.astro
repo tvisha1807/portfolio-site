@@ -1,0 +1,56 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  /** Constrains image width; default is full width of the container */
+  size?: 'full' | 'large' | 'medium' | 'small' | 'xs';
+  captionAlign?: 'left' | 'center';
+}
+
+const { src, alt, caption, size = 'full', captionAlign = 'left' } = Astro.props;
+
+const sizeClasses: Record<NonNullable<Props['size']>, string> = {
+  full: 'w-full',
+  large: 'w-full max-w-4xl',
+  medium: 'w-full max-w-2xl',
+  small: 'w-full max-w-md',
+  xs: 'w-full max-w-[220px]',
+};
+
+const isConstrained = size !== 'full';
+const isCentered = captionAlign === 'center';
+---
+
+<figure
+  class:list={[
+    'space-y-3 md:space-y-4',
+    isCentered ? 'w-full' : isConstrained && 'w-fit max-w-full',
+    !isCentered && isConstrained && 'mx-auto',
+    isCentered && 'mx-auto',
+  ]}
+>
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    class:list={[
+      'h-auto rounded-xl md:rounded-2xl block',
+      sizeClasses[size],
+      isCentered && 'mx-auto',
+    ]}
+  />
+  {
+    caption && (
+      <figcaption
+        class:list={[
+          'text-sm md:text-base text-muted leading-relaxed',
+          isCentered && 'text-center max-w-3xl mx-auto',
+        ]}
+      >
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>

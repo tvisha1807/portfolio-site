@@ -1,0 +1,25 @@
+---
+interface Props {
+  asideSrc: string;
+  asideAlt: string;
+}
+
+const { asideSrc, asideAlt } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_min(42%,520px)] gap-8 items-start"
+>
+  <div class="space-y-12 md:space-y-16 min-w-0">
+    <slot />
+  </div>
+  <figure class="w-full lg:sticky lg:top-24">
+    <img
+      src={asideSrc}
+      alt={asideAlt}
+      loading="lazy"
+      decoding="async"
+      class="w-full h-auto rounded-xl md:rounded-2xl"
+    />
+  </figure>
+</div>

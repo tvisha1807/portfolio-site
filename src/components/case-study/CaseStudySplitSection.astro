@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  imageSrc: string;
+  imageAlt: string;
+  id?: string;
+  imagePosition?: 'left' | 'right';
+  /** Align text to top of column instead of vertically centering against the image */
+  contentAlign?: 'start' | 'center';
+  /** Tighter gap between section title and two-column content */
+  compact?: boolean;
+}
+
+const {
+  title,
+  imageSrc,
+  imageAlt,
+  id,
+  imagePosition = 'right',
+  contentAlign = 'center',
+  compact = false,
+} = Astro.props;
+
+const textOrder = imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2';
+const imageOrder = imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1';
+---
+
+<section
+  id={id}
+  class:list={[compact ? 'space-y-3 md:space-y-4' : 'space-y-6 md:space-y-8']}
+>
+  <h2 class="text-[32px] font-bold leading-tight text-black">
+    {title}
+  </h2>
+
+  <div
+    class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"
+  >
+    <div
+      class:list={[
+        'text-base md:text-lg leading-relaxed text-black space-y-4 md:space-y-5 flex flex-col min-h-0 h-full',
+        contentAlign === 'start' ? 'justify-start' : 'justify-center',
+        textOrder,
+      ]}
+    >
+      <slot />
+    </div>
+
+    <figure
+      class:list={[
+        'm-0 flex items-stretch justify-center min-h-0 h-full',
+        imageOrder,
+      ]}
+    >
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full min-h-[240px] lg:min-h-0 object-contain rounded-xl md:rounded-2xl"
+      />
+    </figure>
+  </div>
+</section>

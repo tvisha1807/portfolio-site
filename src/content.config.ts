@@ -13,6 +13,7 @@ const projects = defineCollection({
     role: z.string(),
     featured: z.boolean().default(false),
     order: z.number().default(99),
+    template: z.enum(['default', 'case-study']).default('default'),
   }),
 });
 

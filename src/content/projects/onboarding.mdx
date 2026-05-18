@@ -1,15 +1,152 @@
 ---
-title: "An efficient way to onboard new employees"
-description: "Streamlining the employee onboarding journey to reduce friction and create a better experience for new joinees from day one."
-summary: "Starting a new job is stressful enough, onboarding shouldn't add to that. We worked on streamlining the onboarding journey to create a better experience for new joinees."
-tags: ["UX Design", "Onboarding", "Employee Experience"]
+title: "Making Onboarding Efficient"
+description: "Streamlining onboarding documentation into an efficient, intuitive process new joinees can follow."
+summary: "Streamlining the onboarding documentation and creating a more efficient and intuitive process that the user can follow and refer to during the process."
+tags: ["UX Research", "Documentation", "Enterprise"]
 coverImage: "/images/projects/onboarding-cover.png"
 year: 2024
 role: "Product Designer"
 featured: true
 order: 3
+template: case-study
 ---
 
-## Overview
+import CaseStudyShell from '../../components/case-study/CaseStudyShell.astro';
+import CaseStudyBackLink from '../../components/case-study/CaseStudyBackLink.astro';
+import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
+import CaseStudyOverview from '../../components/case-study/CaseStudyOverview.astro';
+import CaseStudySection from '../../components/case-study/CaseStudySection.astro';
+import CaseStudyFigure from '../../components/case-study/CaseStudyFigure.astro';
+import CaseStudyStatGrid from '../../components/case-study/CaseStudyStatGrid.astro';
+import CaseStudyAsideGroup from '../../components/case-study/CaseStudyAsideGroup.astro';
+import CaseStudySplitSection from '../../components/case-study/CaseStudySplitSection.astro';
+import CaseStudyVisualCuePair from '../../components/case-study/CaseStudyVisualCuePair.astro';
 
-Case study content coming soon.
+<CaseStudyShell>
+  <CaseStudyBackLink />
+
+  <CaseStudyHero title="Making Onboarding Efficient" tag="UX Research" />
+
+  <CaseStudyOverview tools={['Figma', 'FigJam']}>
+    Streamlining the onboarding documentation and creating a more efficient and intuitive process that the user can follow and refer to during the process.
+  </CaseStudyOverview>
+
+  <CaseStudySection title="Problem Statement">
+    <p>
+      Starting a new Project is stressful, onboarding procedures shouldn't add to it. Our goal for this project was to streamline onboarding processes and create a document that a new joinee can follow through to complete their onboarding.
+    </p>
+  </CaseStudySection>
+
+  <CaseStudySection title="First Steps">
+    <p>
+      We first started with compiling and laying out the current process so as to identify the gaps and any overlap in the process. Once we had that down on the board we moved forward to streamlining the process. Creating sub-categories for steps in the same department.
+    </p>
+  </CaseStudySection>
+
+  <CaseStudySplitSection
+    title="Old Process"
+    imageSrc="/images/projects/onboarding-oldprocess.png"
+    imageAlt="Flowchart of the previous long, overlapping onboarding process with interconnected steps"
+    contentAlign="start"
+    compact
+  >
+    <p>
+      The old process for the company onboarding was a long and overlapping process. With many steps having pre-requisites or mandatory steps that need to be done, which the new joinee would then have to scramble to complete. It also didn't mention specifics for document submission, thus leading to mistakes made following document type and signatures.
+    </p>
+  </CaseStudySplitSection>
+
+  <CaseStudySection title="New Process">
+    <p>
+      We streamlined the process and broke it down into chunks, that were easy to follow. For sections that required certain steps to be completed or confirmations from admin, a clear pre-requites section was added at the top, detailing the requirements so as to avoid any confusion. We used clear and to the point language in the documentation and also provided a easy way to refer to old steps.
+    </p>
+    <CaseStudyFigure
+      src="/images/projects/onboarding-newprocess.png"
+      alt="Chunked new onboarding flow broken into sequential, easier-to-follow stages"
+    />
+  </CaseStudySection>
+
+  <CaseStudyAsideGroup
+    asideSrc="/images/projects/onboarding-solution.png"
+    asideAlt="Interactive PDF onboarding document mockup with tab navigation and a welcome overview screen"
+  >
+    <CaseStudySection title="however, while working on this step, we came across another problem that we had overlooked.">
+      <p>
+        Since the onboarding was for a different company, many terms and shortcuts used in the onboarding process were foreign to new onboarding members.
+      </p>
+    </CaseStudySection>
+
+    <CaseStudySection title="Our Solution">
+      <p>
+        Since the onboarding was for a different company, many terms and shortcuts used in the onboarding process were foreign to new onboarding members.
+      </p>
+    </CaseStudySection>
+  </CaseStudyAsideGroup>
+
+  <CaseStudySplitSection
+    title="Final Documentation"
+    imageSrc="/images/projects/onboarding-finaldocumentation.png"
+    imageAlt="Three documentation screens showing the welcome overview, process flow, and an individual process page"
+    contentAlign="start"
+    compact
+  >
+    <p>
+      The final step was collecting and creating a new onboarding document. Keeping in mind all our results and ideas we created a interactive and simple to follow pdf document, with clickable links taking you directly to the portal mentioned in the steps as well as interactivity within the pdf, allowing you to move between process pages via tabs.
+    </p>
+  </CaseStudySplitSection>
+
+  <CaseStudySection title="Utilising Colors and Visual Cues" contentSpacing="loose">
+    <p>
+      To make the document intuitive we utilised visual cues, colour coding the different processes to allow easy differentiation at a glance.
+    </p>
+    <CaseStudyFigure
+      src="/images/projects/onboarding-processflow.png"
+      alt="Process flow row with colour-coded steps and short explanations for each stage"
+      caption="Short explanations for each step in the process, while also marking important steps in red."
+      size="large"
+      captionAlign="center"
+    />
+    <CaseStudyVisualCuePair
+      items={[
+        {
+          src: '/images/projects/onboarding-prerequisite.png',
+          alt: 'Pre-requisite panel highlighted at the top of a process page',
+          caption:
+            'Colour and visual cues to make pre-requisites panel stand out and be the first thing the reader sees.',
+        },
+        {
+          src: '/images/projects/onboarding-importantnote.png',
+          alt: 'Important Note panel highlighted in yellow on a documentation screen',
+          caption:
+            'Important Notes marked yellow to make then eye-catching and visible to the reader, while still having enough differentiation from other panels',
+        },
+      ]}
+    />
+  </CaseStudySection>
+
+  <CaseStudySection title="Final Results and Next Steps">
+    <CaseStudyStatGrid
+      stats={[
+        {
+          metric: '34%',
+          description:
+            'Total time required for onboarding reduced by 34%',
+        },
+        {
+          metric: 'Static screens',
+          description:
+            'Working on creating an engaging user flow with only static screens',
+        },
+        {
+          metric: 'PDF form',
+          description:
+            'Creating designs and flows that translate and present well in a pf form',
+        },
+      ]}
+    />
+    <p>
+      The Onboarding document was the start of a bigger re-design. The new onboarding document proved to increase efficiency of onboarding employees and reduced the total time required to onboard to the project by 34%. It was a great way to practice UX principles as well as design principles like proximity and similarity. It was also interesting to tackle the designing in a way that can be translated into a pdf document, i.e creating ways to draw attention to certain information, allowing the user to still get a visual of their progress etc. without the aid of interactions. We were then tasked to gamify and create an interactive portal for onboarding which would be part of a bigger resource management portal for the company.
+    </p>
+  </CaseStudySection>
+
+  <CaseStudyBackLink variant="bottom" />
+</CaseStudyShell>

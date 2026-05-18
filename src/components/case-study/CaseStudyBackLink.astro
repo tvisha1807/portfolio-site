@@ -1,0 +1,23 @@
+---
+interface Props {
+  variant?: 'top' | 'bottom';
+}
+
+const { variant = 'top' } = Astro.props;
+
+const isTop = variant === 'top';
+const href = isTop ? '/work' : '/';
+const label = isTop ? '← Back' : 'Back to main page';
+---
+
+<a
+  href={href}
+  class:list={[
+    'inline-block font-bold text-black hover:text-accent transition-colors',
+    isTop
+      ? 'text-base md:text-lg mb-4 md:mb-6'
+      : 'text-lg md:text-xl xl:text-2xl mt-8 md:mt-12 underline underline-offset-4 decoration-accent',
+  ]}
+>
+  {label}
+</a>

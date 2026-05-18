@@ -1,0 +1,44 @@
+---
+interface Props {
+  overviewHeading?: string;
+  toolsHeading?: string;
+  tools?: string[];
+}
+
+const {
+  overviewHeading = 'Project Overview',
+  toolsHeading = 'Tools Used',
+  tools = [],
+} = Astro.props;
+
+const hasToolsSlot = Astro.slots.has('tools');
+const hasToolsList = tools.length > 0;
+---
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div>
+    <h2 class="text-[24px] md:text-[30px] xl:text-[36px] font-bold text-black mb-4 md:mb-6">
+      {overviewHeading}
+    </h2>
+    <div class="text-base md:text-lg leading-relaxed text-black space-y-4">
+      <slot />
+    </div>
+  </div>
+
+  <div class="md:border-l md:border-gray-200 md:pl-10 xl:pl-16">
+    <h2 class="text-[24px] md:text-[30px] xl:text-[36px] font-bold text-black mb-4 md:mb-6">
+      {toolsHeading}
+    </h2>
+    {
+      hasToolsSlot ? (
+        <slot name="tools" />
+      ) : hasToolsList ? (
+        <ul class="list-none m-0 p-0 space-y-2 text-base md:text-lg font-bold text-black">
+          {tools.map((tool) => (
+            <li>{tool}</li>
+          ))}
+        </ul>
+      ) : null
+    }
+  </div>
+</section>

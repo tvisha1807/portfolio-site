@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+  /** Extra vertical space between blocks inside the section */
+  contentSpacing?: 'default' | 'loose';
+}
+
+const { title, id, contentSpacing = 'default' } = Astro.props;
+
+const contentSpacingClasses =
+  contentSpacing === 'loose'
+    ? 'space-y-10 md:space-y-14 xl:space-y-16'
+    : 'space-y-4 md:space-y-5';
+---
+
+<section id={id} class="space-y-6 md:space-y-8">
+  <h2 class="text-[32px] font-bold leading-tight text-black">
+    {title}
+  </h2>
+  <div
+    class:list={[
+      'text-base md:text-lg leading-relaxed text-black',
+      contentSpacingClasses,
+    ]}
+  >
+    <slot />
+  </div>
+</section>
